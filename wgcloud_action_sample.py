@@ -18,7 +18,7 @@ def gen_sign(timestamp, secret):
     return sign
 
 
-def notification(key, secret, content):
+def notification(key, secret, content,monitor_server):
     url = "https://open.feishu.cn/open-apis/bot/v2/hook/"+key
     timestamp = int(datetime.timestamp(datetime.now()))
     sign = gen_sign(timestamp, secret)
@@ -69,7 +69,7 @@ def notification(key, secret, content):
                                 },
                                 "type": "primary",
                                 "multi_url": {
-                                    "url": "https://wgcloud.sqjzcloud.cn/",
+                                    "url": monitor_server,
                                     "pc_url": "",
                                     "android_url": "",
                                     "ios_url": ""
@@ -105,8 +105,9 @@ def notification(key, secret, content):
 if __name__ == "__main__":
     key = "webhook"
     secret = "密钥"
+    monitor_server="https://wgcloud.sample.com"
     curr_time = datetime.now()
     time_str = datetime.strftime(curr_time, '%Y-%m-%d %H:%M:%S')
     content = time_str+"----" + \
         bytes(argv[1], 'utf-8').decode('unicode_escape')+"\n"
-    notification(key, secret, content)
+    notification(key, secret, content, monitor_server)
