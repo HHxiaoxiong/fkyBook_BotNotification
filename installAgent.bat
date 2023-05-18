@@ -7,8 +7,9 @@ set "url=%~1"
 set "installDir=%~2"
 set "alias=%~3"
 set "token=%~4"
-set "version=3.4.6"
-set "jktoken=6A724E8E4728062AC353A6B63473D90C"
+set "version=3.4.7"
+:: 这里填写token的md5值
+set "jktoken=token_md5"
 :: 检查是否提供了必要的参数
 if not defined url (
     echo URL parameter is missing. Aborting.
